@@ -9,7 +9,7 @@ NULL
 ## Installation
 
 ```
-    go get github.com/Liyafeng/tilemaps-go
+go get github.com/Liyafeng/tilemaps-go
 ```
 
 ## Documentation
