@@ -18,33 +18,20 @@ TODO
 
 ## Example
 ``` go
-// Fetch new store.
-store, err := NewRediStore(10, "tcp", ":6379", "", []byte("secret-key"))
-if err != nil {
-	panic(err)
-}
-defer store.Close()
 
-// Get a session.
-session, err = store.Get(req, "session-key")
-if err != nil {
-	log.Error(err.Error())
+tm := Tilemap{
+	Type:   2,
+	Level:  16,
+	Startx: 116.397558,
+	Starty: 39.930505,
+	Endx:   116.412255,
+	Endy:   39.913462,
 }
 
-// Add a value.
-session.Values["foo"] = "bar"
+img, _ := BeginMakeTilemap(tm)
 
-// Save.
-if err = sessions.Save(req, rsp); err != nil {
-	t.Fatalf("Error saving session: %v", err)
-}
+imgFile, _ := os.Create("./test.png")
 
-// Delete session.
-session.Options.MaxAge = -1
-if err = sessions.Save(req, rsp); err != nil {
-	t.Fatalf("Error saving session: %v", err)
-}
+png.Encode(imgFile, img)
 
-// Change session storage configuration for MaxAge = 10 days.
-store.SetMaxAge(10 * 24 * 3600)
 ```
