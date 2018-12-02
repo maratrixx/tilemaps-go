@@ -28,7 +28,7 @@ tm := Tilemap{
 	Endy:   39.913462,
 }
 
-img, _ := BeginMakeTilemap(tm)
+img, _ := tilemaps.BeginMakeTilemap(tm)
 
 imgFile, _ := os.Create("./test.png")
 
